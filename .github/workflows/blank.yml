@@ -13,6 +13,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD}}
-          docker pull gableroux/unity3d
+          docker pull gableroux/unity3d:2018.3.11f1
           docker run -v $(pwd):/work gableroux/unity3d /bin/bash
           ./local_test.sh
