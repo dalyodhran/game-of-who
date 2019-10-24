@@ -4,16 +4,15 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ DOCKER_PASSWORD}}
-        docker pull gableroux/unity3d
-        docker run -v $(pwd):/work gableroux/unity3d /bin/bash
-        ./local_test.sh
+      - uses: actions/checkout@v1
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: Run a multi-line script
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ secrets.DOCKER_PASSWORD}}
+          docker pull gableroux/unity3d
+          docker run -v $(pwd):/work gableroux/unity3d /bin/bash
+          ./local_test.sh
